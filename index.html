@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Prism Market Hub — shop and sell products across Kenya.">
+  <title>Prism Market Hub | Shop Kenya</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Prism Market Hub home"><span class="brand-mark">P</span><span>Prism <b>Market Hub</b><small>SHOP • SELL • DISCOVER</small></span></a>
+    <div class="top-actions">
+      <button class="icon-btn" id="cartButton" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+      <button class="menu-btn" id="menuButton" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="nav" id="mainNav">
+    <a href="#shop" class="active" data-view="shop">Shop</a>
+    <a href="#seller" data-view="seller">Seller centre</a>
+    <a href="#admin" data-view="admin">Admin demo</a>
+    <a href="#how" data-view="how">How it works</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="shop">
+      <div class="hero-copy">
+        <span class="eyebrow">KENYA'S EVERYDAY MARKETPLACE</span>
+        <h1>Find what you need.<br><em>Sell what you love.</em></h1>
+        <p>Discover products from independent sellers. Shop conveniently from one place.</p>
+        <a class="primary-btn" href="#products">Explore products <span>→</span></a>
+        <div class="hero-trust"><span>✓ Easy discovery</span><span>✓ Local sellers</span><span>✓ Kenya-focused</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-card card-a"><span>👟</span><b>Style</b><small>Everyday finds</small></div>
+        <div class="art-card card-b"><span>🎧</span><b>Tech</b><small>Smart choices</small></div>
+        <div class="art-card card-c"><span>👜</span><b>Living</b><small>Little upgrades</small></div>
+        <div class="art-center">P<span>✦</span></div>
+      </div>
+    </section>
+
+    <section class="search-wrap" id="products">
+      <div class="section-heading"><div><span class="eyebrow">THE MARKETPLACE</span><h2>Explore products</h2></div><span class="muted" id="productTotal">0 products</span></div>
+      <div class="filters">
+        <label class="search-box">⌕ <input id="searchInput" type="search" placeholder="Search products, e.g. shoes, phone..."></label>
+        <select id="categoryFilter" aria-label="Filter by category"><option value="All">All categories</option><option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Sports</option><option>Food</option><option>Other</option></select>
+        <select id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state hidden" id="emptyState">No products found. Try another search or add a product in Seller Centre.</div>
+    </section>
+
+    <section class="seller-banner" id="seller">
+      <div><span class="eyebrow">GROW WITH PRISM</span><h2>Have something to sell?</h2><p>Create a product listing and introduce your shop to new customers.</p></div>
+      <a href="#sellerPanel" class="light-btn">Start selling <span>→</span></a>
+    </section>
+
+    <section class="panel-section" id="sellerPanel">
+      <div class="section-heading"><div><span class="eyebrow">SELLER CENTRE</span><h2>List a product</h2></div><span class="demo-tag">DEMO MODE</span></div>
+      <div class="dashboard-grid">
+        <form id="productForm" class="form-card">
+          <h3>Product details</h3>
+          <label>Product name<input name="name" required maxlength="60" placeholder="e.g. Wireless headphones"></label>
+          <div class="form-row"><label>Price (KSh)<input name="price" type="number" min="1" step="1" required placeholder="2500"></label><label>Category<select name="category"><option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Sports</option><option>Food</option><option>Other</option></select></label></div>
+          <label>Short description<textarea name="description" rows="3" maxlength="180" placeholder="Describe your product..."></textarea></label>
+          <label>Image URL (optional)<input name="image" type="url" placeholder="https://example.com/photo.jpg"></label>
+          <label>Seller / shop name<input name="seller" required maxlength="50" placeholder="Your shop name"></label>
+          <button class="primary-btn full" type="submit">Publish demo listing <span>→</span></button>
+          <p class="hint">This prototype saves listings in this browser only. It does not publish to a shared marketplace.</p>
+        </form>
+        <div class="stats-card">
+          <h3>Your seller snapshot</h3>
+          <div class="stat"><span>My listings</span><b id="sellerListings">0</b></div>
+          <div class="stat"><span>Items in customer carts</span><b id="sellerCartItems">0</b></div>
+          <div class="stat"><span>Demo orders</span><b id="sellerOrders">0</b></div>
+          <div class="tip-box"><b>Seller tip</b><p>Use clear photos, accurate descriptions and fair prices. Agree on delivery and returns before accepting real orders.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-section admin-section" id="admin">
+      <div class="section-heading"><div><span class="eyebrow">MARKETPLACE CONTROL</span><h2>Admin dashboard</h2></div><span class="demo-tag">LOCAL DEMO</span></div>
+      <div class="admin-grid">
+        <div class="admin-metric"><span>Total listings</span><b id="adminProducts">0</b></div>
+        <div class="admin-metric"><span>Demo orders</span><b id="adminOrders">0</b></div>
+        <div class="admin-metric"><span>Demo order value</span><b id="adminValue">KSh 0</b></div>
+      </div>
+      <div class="admin-tools"><h3>Manage demo listings</h3><div id="adminList" class="admin-list"></div><button id="resetButton" class="danger-btn">Reset demo data</button></div>
+      <p class="hint">The admin area is not protected by a real login. Do not use this demo to manage real customer or payment data.</p>
+    </section>
+
+    <section class="how-section" id="how">
+      <span class="eyebrow">SIMPLE BY DESIGN</span><h2>How Prism Market Hub works</h2>
+      <div class="steps"><article><span>01</span><h3>Discover</h3><p>Buyers search and browse products by category.</p></article><article><span>02</span><h3>List</h3><p>Sellers add product details and a price.</p></article><article><span>03</span><h3>Order</h3><p>Buyers add items to cart and submit a demo order.</p></article></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">P</span><span>Prism <b>Market Hub</b><small>SHOP • SELL • DISCOVER</small></span></a><p>© <span id="year"></span> Prism Market Hub. Prototype demonstration.</p><p class="footer-note">Demo only • No real payments or deliveries are processed.</p></footer>
+
+  <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">YOUR BASKET</span><h2>Shopping cart</h2></div><button class="close-btn" id="closeCart" aria-label="Close cart">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom"><div class="total-line"><span>Subtotal</span><b id="cartSubtotal">KSh 0</b></div><p class="hint">Delivery charges, if any, are agreed with the seller.</p><button id="checkoutButton" class="primary-btn full">Continue to checkout →</button></div>
+  </aside>
+
+  <dialog id="checkoutDialog">
+    <form id="checkoutForm" method="dialog" class="checkout-form">
+      <div class="drawer-head"><div><span class="eyebrow">ALMOST THERE</span><h2>Checkout</h2></div><button type="button" class="close-btn" id="closeCheckout">×</button></div>
+      <p class="hint">Demo checkout only. Do not enter payment PINs or sensitive information.</p>
+      <label>Full name<input name="customer" required maxlength="70" placeholder="Your name"></label>
+      <label>Phone number<input name="phone" required type="tel" pattern="[0-9+ ]{9,15}" placeholder="07XX XXX XXX"></label>
+      <label>Delivery location<input name="location" required maxlength="120" placeholder="Town / estate / pickup point"></label>
+      <label>Payment preference<select name="payment"><option>M-Pesa (payment on delivery / arrange with seller)</option><option>Cash on delivery / collection</option><option>Arrange directly with seller</option></select></label>
+      <div class="total-line"><span>Order total</span><b id="checkoutTotal">KSh 0</b></div>
+      <button class="primary-btn full" type="submit">Place demo order</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
